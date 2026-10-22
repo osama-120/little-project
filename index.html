@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عيد ميلاد ياسمين 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(145deg, #fff0f6, #ffd6e7, #ffe9f2);
+  color: #87345c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px 22px;
+  text-align: center;
+  background: rgba(255,255,255,.9);
+  border: 2px solid #ffc1dc;
+  border-radius: 28px;
+  box-shadow: 0 12px 35px #d96a9630;
+  position: relative;
+  z-index: 2;
+  animation: appear .7s ease;
+}
+
+h1 {
+  color: #d94f8a;
+  font-size: 27px;
+  margin: 8px 0 18px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 2;
+}
+
+.decoration {
+  font-size: 43px;
+  margin-bottom: 10px;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
+  padding: 13px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform .2s, background .2s;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.main-btn {
+  width: 100%;
+  color: white;
+  background: linear-gradient(135deg, #ff78ac, #e64f91);
+  box-shadow: 0 5px 12px #e64f9130;
+  margin-top: 14px;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  margin: 11px 0;
+  background: #fff0f6;
+  color: #a23e6b;
+  border: 2px solid #ffc3dc;
+}
+
+.option:hover {
+  background: #ffdeec;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.error {
+  color: #d83269;
+  font-weight: 800;
+  margin-top: 15px;
+}
+
+.message {
+  text-align: right;
+  background: #fff3f8;
+  border-radius: 18px;
+  padding: 17px;
+  border: 1px solid #ffd1e3;
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 2.1;
+  overflow-wrap: anywhere;
+}
+
+.correct-message {
+  color: #d94f8a;
+  font-weight: 800;
+  animation: appear 1s ease;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  z-index: 3;
+  pointer-events: none;
+  animation: floatUp 6s linear forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="card">
+
+  <!-- الصفحة الأولى -->
+  <section id="intro">
+    <div class="decoration">🎀🌷</div>
+    <h1>ياسمين 💗</h1>
+    <p>عندي ليك مفاجأة ماتغشيش</p>
+    <button class="main-btn" onclick="showQuestion()">
+      نشوف المفاجأة
+    </button>
+  </section>
+
+  <!-- السؤال -->
+  <section id="quiz" class="hidden">
+    <div class="decoration">🌸</div>
+    <h1>جاوبي على السؤال</h1>
+
+    <p>شنو الحاجة اللي خلات أسامة يدير هاد الموقع كامل؟</p>
+
+    <button class="option" onclick="answer('A')">
+      A — مسالي قبو
+    </button>
+
+    <button class="option" onclick="answer('B')">
+      B — كيحماق على ياسمين
+    </button>
+
+    <button class="option" onclick="answer('C')">
+      C — يضحك وصف
+    </button>
+
+    <p id="error" class="error hidden">غلط، إعادة</p>
+  </section>
+
+  <!-- الرسالة الأولى -->
+  <section id="love" class="hidden">
+    <div class="decoration">💗🌹</div>
+    <h1>عندي ليك كلمة</h1>
+
+    <p>بما انك ضغطتي على زر يعني كتبغيني وحتى انا كنبغيك يا احسن بنت شافتها عيني</p>
+
+    <button class="main-btn" onclick="showBirthday()">
+      كملي المفاجأة 🎀
+    </button>
+  </section>
+
+  <!-- رسالة عيد الميلاد -->
+  <section id="birthday" class="hidden">
+    <div class="decoration">🎂💗🌷</div>
+    <h1>عيد ميلاد سعيد يا ياسمين!</h1>
+
+    <div class="message">عيد ميلاد سعيد يا روح حبيبها عقبال لالف عام هاذ نهار راه ماشي نهار عادي هذا راه نهار لي تزادت فيه عينيا و روحي و قلبي غالبا ونتيا كتقراي فهدشي اتكوني كتهللي بالضحك يا عليا يا على هاذ الهبلة لي درت ولكن ملقيتش شي طريقة حسن من هكا واخا ماشي اول واحد نديرها ولكن بغيت ندير شي حاجة لي غالبا تاحد مادارها لك ف عيد ميلادك و جوج كلمات ف مسج هاذي كنديرها لعشراني ماشي لحب قلبي مهم راني كندير فهدشي ومعارفش واش غيصدق كنبغيك ايلفيو بزاف</div>
+
+    <p>🎀 نهارك زوين بحالك 🎀</p>
+  </section>
+
+</main>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('main section').forEach(function(section) {
+    section.classList.add('hidden');
+  });
+
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function showQuestion() {
+  showSection('quiz');
+}
+
+function answer(choice) {
+  var error = document.getElementById('error');
+
+  if (choice === 'B') {
+    error.classList.add('hidden');
+    showSection('love');
+
+    // رسالة تظهر عند الجواب الصحيح
+    var message = document.createElement('p');
+    message.textContent = 'عرفتي الجواب الصحيح يا ياسمين!';
+    message.className = 'correct-message';
+
+    var loveSection = document.getElementById('love');
+    var button = loveSection.querySelector('button');
+
+    loveSection.insertBefore(message, button);
+
+    // قلوب وورود احتفالية
+    for (var i = 0; i < 24; i++) {
+      setTimeout(createHeart, i * 180);
+    }
+
+  } else {
+    error.textContent = 'غلط، إعادة';
+    error.classList.remove('hidden');
+  }
+}
+
+function showBirthday() {
+  showSection('birthday');
+
+  for (var i = 0; i < 24; i++) {
+    setTimeout(createHeart, i * 180);
+  }
+}
+
+function createHeart() {
+  var heart = document.createElement('div');
+  heart.className = 'heart';
+
+  var decorations = ['💗', '💕', '🌸', '🎀'];
+  heart.textContent =
+    decorations[Math.floor(Math.random() * decorations.length)];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (18 + Math.random() * 20) + 'px';
+
+  document.body.appendChild(heart);
+
+  setTimeout(function() {
+    heart.remove();
+  }, 6500);
+}
+</script>
+
+</body>
+</html>
