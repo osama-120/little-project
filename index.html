@@ -9,9 +9,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -31,7 +29,7 @@ body {
   max-width: 440px;
   padding: 30px 22px;
   text-align: center;
-  background: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.93);
   border: 2px solid #ffc1dc;
   border-radius: 28px;
   box-shadow: 0 12px 35px #d96a9630;
@@ -67,9 +65,7 @@ button {
   transition: transform .2s, background .2s;
 }
 
-button:active {
-  transform: scale(.96);
-}
+button:active { transform: scale(.96); }
 
 .main-btn {
   width: 100%;
@@ -88,13 +84,7 @@ button:active {
   border: 2px solid #ffc3dc;
 }
 
-.option:hover {
-  background: #ffdeec;
-}
-
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
 
 .error {
   color: #d83269;
@@ -129,14 +119,8 @@ button:active {
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes floatUp {
@@ -146,27 +130,170 @@ button:active {
   }
 }
 
+/* الظرف السري */
+.envelope-area { margin: 24px auto; }
+
+.envelope {
+  font-size: 95px;
+  background: transparent;
+  animation: envelopeFloat 2s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
+
+.letter {
+  background: #fff0f6;
+  border: 2px solid #ffc1dc;
+  padding: 16px;
+  border-radius: 18px;
+  line-height: 2;
+  animation: appear .7s ease;
+}
+
+/* الكيك والشموع */
+.cake { font-size: 100px; margin: 20px 0; }
+
+.candle-button {
+  width: 100%;
+  color: white;
+  background: linear-gradient(135deg, #ff78ac, #e64f91);
+  margin-top: 12px;
+}
+
+/* بطاقات الرسائل */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.memory-card {
+  min-height: 110px;
+  padding: 15px 8px;
+  border-radius: 18px;
+  border: 2px solid #ffc1dc;
+  background: #fff0f6;
+  color: #a23e6b;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.memory-card span {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.memory-message {
+  background: #fff3f8;
+  border: 1px solid #ffd1e3;
+  padding: 15px;
+  border-radius: 16px;
+  margin-top: 15px;
+  line-height: 2;
+  animation: appear .5s ease;
+}
+
+/* سماء الأمنيات */
+.star-sky {
+  min-height: 220px;
+  margin: 18px 0;
+  padding: 18px 8px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #4d376d, #9a639c, #f5a8ca);
+}
+
+.star-button {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px;
+  font-size: 32px;
+  color: white;
+  background: transparent;
+  animation: twinkle 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .65; transform: scale(.9); }
+  to { opacity: 1; transform: scale(1.12); }
+}
+
+.wish-message {
+  color: #87345c;
+  background: #fff0f6;
+  border-radius: 16px;
+  padding: 14px;
+  line-height: 2;
+  animation: appear .5s ease;
+}
+
+/* شاشة كلمة السر */
+#passwordScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(145deg, #fff0f6, #ffd6e7);
+}
+
+.password-box {
+  width: 100%;
+  max-width: 360px;
+  padding: 28px 22px;
+  background: white;
+  border: 2px solid #ffc1dc;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 12px 35px #d96a9630;
+}
+
+#passwordInput {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 2px solid #ffc1dc;
+  border-radius: 13px;
+  font-size: 18px;
+  text-align: center;
+}
+
 @media (max-width: 380px) {
-  .card {
-    padding: 24px 16px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  p {
-    font-size: 16px;
-  }
+  .card { padding: 24px 16px; }
+  h1 { font-size: 24px; }
+  p { font-size: 16px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- شاشة كلمة السر -->
+<div id="passwordScreen">
+  <div class="password-box">
+    <div class="decoration">🔐🎀</div>
+    <h1>عندك مفاجأة 💗</h1>
+    <p>دخلي كلمة السر باش تشوفيها</p>
+    <input id="passwordInput" type="password"
+           placeholder="كلمة السر">
+    <button class="main-btn" onclick="unlockSite()">
+      فتح المفاجأة 💌
+    </button>
+    <p id="passwordError" class="error hidden">
+      كلمة السر ماشي صحيحة، عاودي
+    </p>
+  </div>
+</div>
+
 <main class="card">
 
-  <!-- الصفحة الأولى -->
+  <!-- المقدمة -->
   <section id="intro">
     <div class="decoration">🎀🌷</div>
     <h1>ياسمين 💗</h1>
@@ -180,7 +307,6 @@ button:active {
   <section id="quiz" class="hidden">
     <div class="decoration">🌸</div>
     <h1>جاوبي على السؤال</h1>
-
     <p>شنو الحاجة اللي خلات أسامة يدير هاد الموقع كامل؟</p>
 
     <button class="option" onclick="answer('A')">
@@ -198,24 +324,113 @@ button:active {
     <p id="error" class="error hidden">غلط، إعادة</p>
   </section>
 
-  <!-- الرسالة الأولى -->
+  <!-- الظرف -->
   <section id="love" class="hidden">
     <div class="decoration">💗🌹</div>
     <h1>عندي ليك كلمة</h1>
+    <p id="correctMessage" class="correct-message">
+      عرفتي الجواب الصحيح يا ياسمين!
+    </p>
+    <p>كاين واحد الظرف فيه كلمة خاصة ليك 💌</p>
 
-    <p>بما انك ضغطتي على زر يعني كتبغيني وحتى انا كنبغيك يا احسن بنت شافتها عيني</p>
+    <div class="envelope-area" id="envelopeArea">
+      <button class="envelope" onclick="openEnvelope()"
+              aria-label="فتح الظرف">💌</button>
+      <p>ضغطي على الظرف باش تحليه</p>
+    </div>
 
-    <button class="main-btn" onclick="showBirthday()">
-      كملي المفاجأة 🎀
+    <div id="letter" class="letter hidden">
+      <p> كنبغيك يا احسن بنت شافتها عيني</p>
+      <p>💗🌹💗</p>
+      <button class="main-btn" onclick="showCake()">
+        كملي المفاجأة 🎀
+      </button>
+    </div>
+  </section>
+
+  <!-- الكيك -->
+  <section id="cakeSection" class="hidden">
+    <div class="decoration">🎂🎉</div>
+    <h1>أمنيّة عيد ميلادك 🎂</h1>
+    <p>قبل ما تكملي، خاصك تطفي الشموع وتمني شي أمنية زوينة ✨</p>
+
+    <div class="cake" id="cake">🎂🕯️🕯️🕯️</div>
+
+    <button id="blowButton" class="candle-button"
+            onclick="blowCandles()">
+      طفي الشموع 🌬️
+    </button>
+
+    <p id="candleMessage" class="hidden">
+      🎉 عيد ميلاد سعيد! نتمنى ليك كل ما هو زوين 💗
+    </p>
+
+    <button id="cakeNext" class="main-btn hidden"
+            onclick="showMemories()">
+      عندي ليك رسائل أخرى 💌
     </button>
   </section>
 
-  <!-- رسالة عيد الميلاد -->
+  <!-- بطاقات الرسائل -->
+  <section id="memories" class="hidden">
+    <div class="decoration">💌🌷</div>
+    <h1>علبة رسائل ليك</h1>
+    <p>كل بطاقة فيها كلمة زوينة، اختاري اللي بغيتي 💗</p>
+
+    <div class="memory-grid">
+      <button class="memory-card"
+              onclick="showMemory(0)">
+        <span>🌷</span>كلمة زوينة
+      </button>
+      <button class="memory-card"
+              onclick="showMemory(1)">
+        <span>💗</span>رسالة من القلب
+      </button>
+      <button class="memory-card"
+              onclick="showMemory(2)">
+        <span>✨</span>أمنية ليك
+      </button>
+      <button class="memory-card"
+              onclick="showMemory(3)">
+        <span>🎀</span>حاجة خاصة
+      </button>
+    </div>
+
+    <div id="memoryMessage" class="memory-message hidden"></div>
+
+    <button class="main-btn" onclick="showWishes()">
+      نمشيو لسماء الأمنيات 🌟
+    </button>
+  </section>
+
+  <!-- سماء الأمنيات -->
+  <section id="wishes" class="hidden">
+    <div class="decoration">🌙✨</div>
+    <h1>سماء الأمنيات</h1>
+    <p>اختاري نجمة، راه مخبية ليك أمنية 🌟</p>
+
+    <div class="star-sky">
+      <button class="star-button" onclick="showWish(0)">★</button>
+      <button class="star-button" onclick="showWish(1)">✦</button>
+      <button class="star-button" onclick="showWish(2)">★</button>
+      <button class="star-button" onclick="showWish(3)">✧</button>
+      <button class="star-button" onclick="showWish(4)">★</button>
+      <button class="star-button" onclick="showWish(5)">✦</button>
+    </div>
+
+    <div id="wishMessage" class="wish-message hidden"></div>
+
+    <button class="main-btn" onclick="showBirthday()">
+      آخر مفاجأة 🎂💗
+    </button>
+  </section>
+
+  <!-- رسالة عيد الميلاد الأصلية -->
   <section id="birthday" class="hidden">
     <div class="decoration">🎂💗🌷</div>
     <h1>عيد ميلاد سعيد يا ياسمين!</h1>
 
-    <div class="message">عيد ميلاد سعيد يا روح حبيبها عقبال لالف عام هاذ نهار راه ماشي نهار عادي هذا راه نهار لي تزادت فيه عينيا و روحي و قلبي غالبا ونتيا كتقراي فهدشي اتكوني كتهللي بالضحك يا عليا يا على هاذ الهبلة لي درت ولكن ملقيتش شي طريقة حسن من هكا واخا ماشي اول واحد نديرها ولكن بغيت ندير شي حاجة لي غالبا تاحد مادارها لك ف عيد ميلادك و جوج كلمات ف مسج هاذي كنديرها لعشراني ماشي لحب قلبي مهم راني كندير فهدشي ومعارفش واش غيصدق كنبغيك ايلفيو بزاف</div>
+    <div class="message">عيد ميلاد سعيد يا روح حبيبها عقبال لالف عام هاذ نهار راه ماشي نهار عادي هذا راه نهار لي تزادت فيه عينيا و روحي و قلبي غالبا ونتيا كتقراي فهدشي اتكوني كتهللي بالضحك يا عليا يا على هاذ الهبلة لي درت ولكن ملقيتش شي طريقة حسن من هكا واخا ماشي اول واحد يديرها ولكن بغيت ندير شي حاجة لي غالبا تاحد مادارها لك ف عيد ميلادك و جوج كلمات ف مسج هاذي كنديرها لعشراني ماشي لحب قلبي مهم راني كندير فهدشي ومعارفش واش غيصدق كنبغيك ايلفيو بزاف</div>
 
     <p>🎀 نهارك زوين بحالك 🎀</p>
   </section>
@@ -223,11 +438,25 @@ button:active {
 </main>
 
 <script>
+function unlockSite() {
+  var input = document.getElementById('passwordInput');
+  var error = document.getElementById('passwordError');
+
+  if (input.value === '11270224') {
+    document.getElementById('passwordScreen').classList.add('hidden');
+  } else {
+    error.classList.remove('hidden');
+  }
+}
+
+document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') unlockSite();
+});
+
 function showSection(id) {
   document.querySelectorAll('main section').forEach(function(section) {
     section.classList.add('hidden');
   });
-
   document.getElementById(id).classList.remove('hidden');
 }
 
@@ -242,25 +471,72 @@ function answer(choice) {
     error.classList.add('hidden');
     showSection('love');
 
-    // رسالة تظهر عند الجواب الصحيح
-    var message = document.createElement('p');
-    message.textContent = 'عرفتي الجواب الصحيح يا ياسمين!';
-    message.className = 'correct-message';
-
-    var loveSection = document.getElementById('love');
-    var button = loveSection.querySelector('button');
-
-    loveSection.insertBefore(message, button);
-
-    // قلوب وورود احتفالية
     for (var i = 0; i < 24; i++) {
       setTimeout(createHeart, i * 180);
     }
-
   } else {
     error.textContent = 'غلط، إعادة';
     error.classList.remove('hidden');
   }
+}
+
+function openEnvelope() {
+  document.getElementById('envelopeArea').classList.add('hidden');
+  document.getElementById('letter').classList.remove('hidden');
+  createHeart();
+}
+
+function showCake() {
+  showSection('cakeSection');
+}
+
+function blowCandles() {
+  document.getElementById('cake').textContent = '🎂💨✨';
+  document.getElementById('blowButton').classList.add('hidden');
+  document.getElementById('candleMessage').classList.remove('hidden');
+  document.getElementById('cakeNext').classList.remove('hidden');
+
+  for (var i = 0; i < 18; i++) {
+    setTimeout(createHeart, i * 150);
+  }
+}
+
+var memoryTexts = [
+  'نتمنى ديما تشوفي الضحكة فوجهك، وتبقى أيامك عامرة بالفرحة واللحظات الزوينة 🌷',
+  'بغيتك تعرفي أن هاد المفاجأة تصاوبات غير باش تفرحك💗',
+  'نتمنى ليك عام جديد فيه النجاح، راحة البال، وتحقيق الحوايج اللي كتحلمي بيها ✨',
+  'من بين لكادوات ولهضرة طيبة لي غاتوصلك هاذي محاولة يائسة من راجلك باش يكون افضلهم 🎀'
+];
+
+function showMemories() {
+  showSection('memories');
+  document.getElementById('memoryMessage').classList.add('hidden');
+}
+
+function showMemory(index) {
+  var box = document.getElementById('memoryMessage');
+  box.textContent = memoryTexts[index];
+  box.classList.remove('hidden');
+}
+
+var wishTexts = [
+  'نتمنى ليك عام جديد كله فرحة وضحك 💗',
+  'نتمنى ليك التوفيق فكل خطوة كتديريها ✨',
+  'نتمنى أحلامك تقرب ليك نهار على نهار 🌷',
+  'نتمنى ليك تكوني سعيدة معايا 🌙',
+  'نتمنى ديما تلقاي أسباب باش تفرحي 🎀',
+  'نتمنى هاد النهار يبقى ذكرى ونوريوه لولادنا ⭐'
+];
+
+function showWishes() {
+  showSection('wishes');
+  document.getElementById('wishMessage').classList.add('hidden');
+}
+
+function showWish(index) {
+  var box = document.getElementById('wishMessage');
+  box.textContent = wishTexts[index];
+  box.classList.remove('hidden');
 }
 
 function showBirthday() {
@@ -276,9 +552,7 @@ function createHeart() {
   heart.className = 'heart';
 
   var decorations = ['💗', '💕', '🌸', '🎀'];
-  heart.textContent =
-    decorations[Math.floor(Math.random() * decorations.length)];
-
+  heart.textContent = decorations[Math.floor(Math.random() * decorations.length)];
   heart.style.left = Math.random() * 100 + 'vw';
   heart.style.fontSize = (18 + Math.random() * 20) + 'px';
 
