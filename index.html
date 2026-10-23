@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -102,6 +101,7 @@ button:active { transform: scale(.96); }
   font-size: 16px;
   line-height: 2.1;
   overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .correct-message {
@@ -196,6 +196,7 @@ button:active { transform: scale(.96); }
   margin-top: 15px;
   line-height: 2;
   animation: appear .5s ease;
+  white-space: pre-wrap;
 }
 
 /* سماء الأمنيات */
@@ -264,6 +265,19 @@ button:active { transform: scale(.96); }
   text-align: center;
 }
 
+/* زر الموسيقى */
+.music-button {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  z-index: 101;
+  width: auto;
+  max-width: calc(100vw - 30px);
+  margin: 0;
+  padding: 11px 15px;
+  box-shadow: 0 5px 12px #e64f9130;
+}
+
 @media (max-width: 380px) {
   .card { padding: 24px 16px; }
   h1 { font-size: 24px; }
@@ -273,6 +287,16 @@ button:active { transform: scale(.96); }
 </head>
 
 <body>
+
+<!-- الموسيقى: يجب أن يكون ملف perfect.m4a بجانب index.html -->
+<audio id="birthdayMusic" loop preload="none">
+  <source src="perfect.m4a" type="audio/mp4">
+</audio>
+
+<button id="musicToggle" class="main-btn music-button hidden"
+        onclick="toggleMusic()" aria-label="تشغيل أو إيقاف الموسيقى">
+  🎵 تشغيل الموسيقى
+</button>
 
 <!-- شاشة كلمة السر -->
 <div id="passwordScreen">
@@ -425,12 +449,12 @@ button:active { transform: scale(.96); }
     </button>
   </section>
 
-  <!-- رسالة عيد الميلاد الأصلية -->
+  <!-- رسالة عيد الميلاد الختامية التي كتبها أسامة -->
   <section id="birthday" class="hidden">
     <div class="decoration">🎂💗🌷</div>
     <h1>عيد ميلاد سعيد يا ياسمين!</h1>
 
-    <div class="message">عيد ميلاد سعيد يا روح حبيبها عقبال لالف عام هاذ نهار راه ماشي نهار عادي هذا راه نهار لي تزادت فيه عينيا و روحي و قلبي غالبا ونتيا كتقراي فهدشي اتكوني كتهللي بالضحك يا عليا يا على هاذ الهبلة لي درت ولكن ملقيتش شي طريقة حسن من هكا واخا ماشي اول واحد يديرها ولكن بغيت ندير شي حاجة لي غالبا تاحد مادارها لك ف عيد ميلادك و جوج كلمات ف مسج هاذي كنديرها لعشراني ماشي لحب قلبي مهم راني كندير فهدشي ومعارفش واش غيصدق كنبغيك ايلفيو بزاف</div>
+    <div class="message">عيد ميلاد سعيد يا روح حبيبها عقبال الف عام كلو سعادة(معايا بطبيعة لحال) بغيت نقول ليك انه هاذ نهار ماشي عادي هاذ نهار هو فين تزاد نصفي الثاني هو فين اسامة كتامل هاذ نهار هو لي تولدات فيه قلبي وروحي وعينيا تقدر يتقولي هاذ نهار عيد ميلادي حتى هو هاذ لبلاصة لي كتقراي فيها هدشي دارت عن مشاعر ومن شخص كيحماق عليك ومكيقدرش يدوز نهارو بلا بيك غالبا اتكوني كتهللي بالضحك يا عليا يا على هاذ لهبلة لي درت ولكن بغيت نكون مختلف حيتاش مقدرتش نتقبل فكرة انه هاذ نهار ايدوز وانا مداير ليك والو ولا كاتب ليك جوج سطورة ف مسج بغيت ندير شي حاجة تكون دائمة هاذ لموقع انخبيوه ونوريوه لولادنا باش يعرفو باباهم شحال كان كيبغيك ومنطولش عليك ايلفيو بزاف</div>
 
     <p>🎀 نهارك زوين بحالك 🎀</p>
   </section>
@@ -444,6 +468,7 @@ function unlockSite() {
 
   if (input.value === '11270224') {
     document.getElementById('passwordScreen').classList.add('hidden');
+    document.getElementById('musicToggle').classList.remove('hidden');
   } else {
     error.classList.remove('hidden');
   }
@@ -452,6 +477,22 @@ function unlockSite() {
 document.getElementById('passwordInput').addEventListener('keydown', function(event) {
   if (event.key === 'Enter') unlockSite();
 });
+
+function toggleMusic() {
+  var music = document.getElementById('birthdayMusic');
+  var button = document.getElementById('musicToggle');
+
+  if (music.paused) {
+    music.play().then(function() {
+      button.textContent = '⏸️ إيقاف الموسيقى';
+    }).catch(function() {
+      button.textContent = '🎵 تعذّر التشغيل، حاولي مجددًا';
+    });
+  } else {
+    music.pause();
+    button.textContent = '🎵 تشغيل الموسيقى';
+  }
+}
 
 function showSection(id) {
   document.querySelectorAll('main section').forEach(function(section) {
